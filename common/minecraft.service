@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve back-end of mc.str.college
+After=network.target
+
+[Service]
+User=minecraft
+Group=www-data
+WorkingDirectory=/home/minecraft/minecraft/common/src
+Environment="PATH=/home/minecraft/minecraft/common/venv/bin"
+ExecStart=/home/minecraft/minecraft/common/venv/bin/uwsgi --ini /home/minecraft/minecraft/common/src/wsgi.ini
+
+[Install]
+WantedBy=multi-user.target

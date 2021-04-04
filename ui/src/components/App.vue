@@ -5,14 +5,22 @@
             <section class="header-background">
                 <div class="navbar-place"></div>
                 <div class="section-container" id="main-content">
-                    <div id="window-apply" class="row">
-                        <div class="col-md-6 centerize">
-                            <Description/>
+                    <template v-if="$root.status == 0">
+                        <div class="row">
+                            <div class="col-md-6 centerize">
+                                <Description/>
+                            </div>
+                            <div class="col-md-6 centerize">
+                                <Form/>
+                            </div>
                         </div>
-                        <div class="col-md-6 centerize">
-                            <Form/>
-                        </div>
-                    </div>
+                    </template>
+                    <template v-else-if="$root.status == 1">
+                        <Success/>
+                    </template>
+                    <template v-else-if="$root.status == 2">
+                        <Error/>
+                    </template>
                 </div>
             </section>
             <Footer/>
@@ -26,10 +34,12 @@ import Footer from '@/components/sections/Footer';
 
 import Description from '@/components/sections/Description';
 import Form from '@/components/sections/Form';
+import Error from '@/components/sections/Error';
+import Success from '@/components/sections/Success';
 
 export default {
     components: {
-        Header, Footer, Description, Form
+        Header, Footer, Description, Form, Error, Success
     }
 }
 </script>

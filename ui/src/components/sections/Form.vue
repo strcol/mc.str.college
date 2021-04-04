@@ -98,7 +98,7 @@
 <script>
 import { required, helpers } from 'vuelidate/lib/validators';
 
-const validateNickname = helpers.regex('validate', /[0-9a-zA-Z_-]+$/);
+const validateNickname = helpers.regex('validate', /^[0-9a-zA-Z_-]+$/);
 
 export default {
     data() {
@@ -141,15 +141,10 @@ export default {
         }
     },
     methods: {
-        submitIfValid() {
-            if (!this.disabledButton) {
-                this.submit();
-            }
-        },
         submit() {
             const vm = this;
-            vm.loading = true;
             const axios = require('axios');
+            vm.loading = true;
             axios.post('https://srv1.kaletise.me/submit', {
                 school: vm.school,
                 fullname: vm.fullname,
@@ -157,8 +152,19 @@ export default {
                 email: vm.email,
                 group: vm.group,
                 nickname: vm.nickname
+            }, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             }).then(function(response) {
-                console.log(response);
+                if (response.data.status == 1) {
+                    vm.$root.status = 1;
+                } else if (response.data.status == 0) {
+                    vm.$root.status = 2;
+                }
+                vm.loading = false;
+            }).catch(function() {
+                vm.$root.status = 2;
                 vm.loading = false;
             });
         }
