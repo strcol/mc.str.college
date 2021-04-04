@@ -20,4 +20,10 @@
 .minecraft-red {
     color: rgb(170, 0, 0);
 }
+
+@media (max-width: 766px) {
+    .la-exclamation-circle {
+        font-size: 72px;
+    }
+}
 </style>

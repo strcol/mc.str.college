@@ -2,10 +2,7 @@
     <div class="centerize" id="success">
         <i class="las la-check-circle minecraft-green"></i><br><br>
         <h3>Заявка отправлена</h3>
-        Заявка на участие в мероприятии отправлена!<br>
-        Не забудь вступить в Telegram чат <a href="https://t.me/mc_ksk">@mc_ksk</a><br>
-        для получения дальнейших инструкций<br>
-        Ждем тебя на мероприятии!
+        Заявка на участие в мероприятии отправлена!
     </div>
 </template>
 
@@ -30,5 +27,11 @@
 #success a:hover {
     color: #dddddd;
     text-decoration: none;
+}
+
+@media (max-width: 766px) {
+    .la-check-circle {
+        font-size: 72px;
+    }
 }
 </style>

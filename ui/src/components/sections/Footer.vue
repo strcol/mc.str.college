@@ -23,7 +23,7 @@
 }
 
 .social-media {
-    font-size: 40px;
+    font-size: 32px;
     z-index: 9999;
 }
 
