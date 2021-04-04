@@ -11,7 +11,7 @@ class Application:
         for key, value in kwargs.items():
             self.classes[key] = value
             setattr(self, key, value)
-        
+
         self.db = self.database.connect()[
             self.config.get('DATABASE_NAME')
         ]
@@ -41,7 +41,7 @@ class Application:
                     })
                     return json.dumps({'status': 1})
                 return json.dumps({'status': 0})
-        except:
+        except Exception:
             return json.dumps({'status': 0})
         return flask.redirect(self.config.get('WEBSITE_URL'), code=301)
 

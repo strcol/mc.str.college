@@ -12,7 +12,7 @@ class MongoDatabase:
     def __init__(self, host, timeout=50):
         self.host = host
         self.timeout = timeout
-    
+
     def connect(self):
         try:
             client = pymongo.MongoClient(
